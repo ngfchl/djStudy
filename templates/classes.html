@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>班级列表</title>
+    <style>
+        table, th, tr, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+<h1>班级列表</h1>
+<div>
+    <a href="/add-class">添加</a>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>className</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in class_list %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.class_name }}</td>
+            <td>
+                <a href="/rm-class/?id={{ item.id }}" onclick="return confirm('您真的确定要这样做吗？\n\n请确认！')">删除</a>
+                <a href="/add-class/?id={{ item.id }}" onclick="return confirm('您真的确定要这样做吗？\n\n请确认！')">修改</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+
+</html>
